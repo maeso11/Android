@@ -4,4 +4,94 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity" />
+    tools:context=".MainActivity"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#9C27B0"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="TRES EN RAYA"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
+
+            <Button
+                android:id="@+id/btnJugador1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1 JUGADOR" />
+
+            <Button
+                android:id="@+id/btnJugador2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2 JUGADORES" />
+        </TableRow>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/radioFacil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="FACIL" />
+
+            <RadioButton
+                android:id="@+id/radioMedio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MEDIO" />
+
+            <RadioButton
+                android:id="@+id/radioDificil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="DIFICIL" />
+        </RadioGroup>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Button" />
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Button" />
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Button" />
+        </TableRow>
+
+    </LinearLayout>
+
+    <androidx.gridlayout.widget.GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black">
+
+    </androidx.gridlayout.widget.GridLayout>
+</LinearLayout>
