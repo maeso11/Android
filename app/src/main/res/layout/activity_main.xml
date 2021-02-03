@@ -33,6 +33,7 @@
                 android:id="@+id/btnJugador1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="Jugar"
                 android:text="1 JUGADOR" />
 
             <Button
@@ -105,6 +106,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
+            android:onClick="toqueCasilla"
             android:src="@drawable/casilla" />
 
         <ImageView
@@ -114,6 +116,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
+            android:onClick="toqueCasilla"
             android:src="@drawable/casilla" />
 
         <ImageView
@@ -121,6 +124,7 @@
             android:layout_width="140dp"
             android:layout_height="121dp"
             android:layout_marginTop="10dp"
+            android:onClick="toqueCasilla"
             android:src="@drawable/casilla" />
 
         <ImageView
@@ -130,6 +134,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
+            android:onClick="toqueCasilla"
             android:src="@drawable/casilla"
             app:layout_column="0"
             app:layout_row="1" />
@@ -138,18 +143,21 @@
             android:id="@+id/b2"
             android:layout_width="140dp"
             android:layout_height="121dp"
+            android:onClick="toqueCasilla"
             android:src="@drawable/casilla" />
 
         <ImageView
             android:id="@+id/b3"
             android:layout_width="140dp"
             android:layout_height="121dp"
+            android:onClick="toqueCasilla"
             android:src="@drawable/casilla" />
 
         <ImageView
             android:id="@+id/c1"
             android:layout_width="140dp"
             android:layout_height="121dp"
+            android:onClick="toqueCasilla"
             android:src="@drawable/casilla"
             app:layout_column="0"
             app:layout_row="2" />
@@ -158,12 +166,14 @@
             android:id="@+id/c2"
             android:layout_width="140dp"
             android:layout_height="121dp"
+            android:onClick="toqueCasilla"
             android:src="@drawable/casilla" />
 
         <ImageView
             android:id="@+id/c3"
             android:layout_width="140dp"
             android:layout_height="121dp"
+            android:onClick="toqueCasilla"
             android:src="@drawable/casilla" />
     </androidx.gridlayout.widget.GridLayout>
 </LinearLayout>
