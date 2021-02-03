@@ -4,27 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:orientation="horizontal">
+    android:background="@color/purple_200"
+    android:orientation="horizontal"
+    tools:context=".MainActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:background="#9C27B0"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/txtTitulo"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
             android:text="TRES EN RAYA"
             android:textColor="@color/black"
             android:textSize="24sp" />
 
         <TableRow
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:gravity="center_horizontal">
 
             <Button
@@ -41,18 +43,19 @@
         </TableRow>
 
         <RadioGroup
-            android:layout_width="match_parent"
+            android:id="@+id/grupoDificultad"
+            android:layout_width="117dp"
             android:layout_height="wrap_content">
 
             <RadioButton
                 android:id="@+id/radioFacil"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="FACIL" />
 
             <RadioButton
                 android:id="@+id/radioMedio"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="MEDIO" />
 
@@ -64,34 +67,103 @@
         </RadioGroup>
 
         <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal">
 
             <Button
-                android:id="@+id/button3"
-                android:layout_width="match_parent"
+                android:id="@+id/btnPartidas"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:text="PARTIDAS" />
 
             <Button
-                android:id="@+id/button4"
-                android:layout_width="match_parent"
+                android:id="@+id/btnRanking"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:text="RANKING" />
 
             <Button
-                android:id="@+id/button5"
-                android:layout_width="match_parent"
+                android:id="@+id/btnSonido"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                app:backgroundTint="@color/teal_700"
+                app:icon="@android:drawable/ic_lock_silent_mode_off" />
         </TableRow>
 
     </LinearLayout>
 
     <androidx.gridlayout.widget.GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/black">
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/a1"
+            android:layout_width="140dp"
+            android:layout_height="121dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/casilla" />
+
+        <ImageView
+            android:id="@+id/a2"
+            android:layout_width="140dp"
+            android:layout_height="121dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/casilla" />
+
+        <ImageView
+            android:id="@+id/a3"
+            android:layout_width="140dp"
+            android:layout_height="121dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/casilla" />
+
+        <ImageView
+            android:id="@+id/b1"
+            android:layout_width="140dp"
+            android:layout_height="121dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/casilla"
+            app:layout_column="0"
+            app:layout_row="1" />
+
+        <ImageView
+            android:id="@+id/b2"
+            android:layout_width="140dp"
+            android:layout_height="121dp"
+            android:src="@drawable/casilla" />
+
+        <ImageView
+            android:id="@+id/b3"
+            android:layout_width="140dp"
+            android:layout_height="121dp"
+            android:src="@drawable/casilla" />
+
+        <ImageView
+            android:id="@+id/c1"
+            android:layout_width="140dp"
+            android:layout_height="121dp"
+            android:src="@drawable/casilla"
+            app:layout_column="0"
+            app:layout_row="2" />
+
+        <ImageView
+            android:id="@+id/c2"
+            android:layout_width="140dp"
+            android:layout_height="121dp"
+            android:src="@drawable/casilla" />
+
+        <ImageView
+            android:id="@+id/c3"
+            android:layout_width="140dp"
+            android:layout_height="121dp"
+            android:src="@drawable/casilla" />
     </androidx.gridlayout.widget.GridLayout>
 </LinearLayout>

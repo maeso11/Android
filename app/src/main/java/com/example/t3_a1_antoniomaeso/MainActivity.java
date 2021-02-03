@@ -1,7 +1,5 @@
 package com.example.t3_a1_antoniomaeso;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -47,7 +45,7 @@ public class MainActivity extends Activity {
         jugadores=1;
         //el metodo Jugar será llamado tanto en el botón de un jugador como en el de dos
         //por eso comprobamos la vista que entra como parámetro
-        if(v.getId()==R.id.dosjugadores){
+        if(v.getId()==R.id.btnJugador2){
             jugadores=2;
         }
 
@@ -58,17 +56,17 @@ public class MainActivity extends Activity {
 
         int dificultad=0;
 
-        if(id==R.id.normal){
+        if(id==R.id.radioMedio){
             dificultad=1;
-        }else if(id==R.id.imposible){
+        }else if(id==R.id.radioDificil){
             dificultad=2;
         }
 
         partida=new Partida(dificultad);
 
         //deshabilitamos los botones del tablero
-        ((Button)findViewById(R.id.unjugador)).setEnabled(false);
-        ((Button)findViewById(R.id.dosjugadores)).setEnabled(false);
+        ((Button)findViewById(R.id.btnJugador1)).setEnabled(false);
+        ((Button)findViewById(R.id.btnJugador2)).setEnabled(false);
         ((RadioGroup)findViewById(R.id.grupoDificultad)).setAlpha(0);
 
     }
@@ -144,8 +142,8 @@ public class MainActivity extends Activity {
         partida=null;
 
         //habilitamos los botones del tablero
-        ((Button)findViewById(R.id.unjugador)).setEnabled(true);
-        ((Button)findViewById(R.id.dosjugadores)).setEnabled(true);
+        ((Button)findViewById(R.id.btnJugador1)).setEnabled(true);
+        ((Button)findViewById(R.id.btnJugador2)).setEnabled(true);
         ((RadioGroup)findViewById(R.id.grupoDificultad)).setAlpha(1);
 
     }
