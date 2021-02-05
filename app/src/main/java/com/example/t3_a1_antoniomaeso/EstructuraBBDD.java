@@ -6,8 +6,21 @@ public class EstructuraBBDD {
 
     public static final String SQL_CREATE_PARTIDAS =
             "CREATE TABLE IF NOT EXISTS " + EstructuraPartidas.TABLE_NAME_PARTIDAS + "(" +
-                    EstructuraPartidas._ID + " integer PRIMARY KEY, " +
-                    EstructuraPartidas.COLUMN_NAME_GANADOR + " text);"
+            EstructuraPartidas._ID + " integer PRIMARY KEY, " +
+            EstructuraPartidas.COLUMN_NAME_GANADOR + " text);";
+
+    public static final String SQL_CREATE_USUARIO =
+            "CREATE TABLE IF NOT EXISTS "+ EstructuraUsuarios.TABLE_NAME_USUARIOS + "(" +
+            EstructuraUsuarios._ID + "integer PRIMARY KEY, " +
+            EstructuraUsuarios.COLUMN_NAME_NOMBRE + " text, " +
+            EstructuraUsuarios.COLUMN_NAME_CANTIDAD + " integer, " +
+            EstructuraUsuarios.COLUMN_NAME_PUNTOS + " integer);";
+
+    public static final String SQL_DELETE_PARTIDAS =
+            "DROP TABLE IF EXISTS " + EstructuraPartidas.TABLE_NAME_PARTIDAS;
+    public static final String SQL_DELETE_USUARIO =
+            "DROP TABLE IF EXISTS " + EstructuraUsuarios.TABLE_NAME_USUARIOS;
+
 
 
     private EstructuraBBDD() {
