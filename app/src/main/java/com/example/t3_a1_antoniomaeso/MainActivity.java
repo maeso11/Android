@@ -1,6 +1,9 @@
 package com.example.t3_a1_antoniomaeso;
 
 import android.app.Activity;
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -11,10 +14,16 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
+    SQLiteHelper helper;
+    SQLiteDatabase db;
+    MediaPlayer media;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        helper = new SQLiteHelper(this);
+        db = helper.getWritableDatabase();
 
         //Inicializamos el array con cada casilla del tablero
         CASILLAS= new int[9];
@@ -127,10 +136,56 @@ public class MainActivity extends Activity {
     private void terminar_partida(int res){
 
         String mensaje;
+        ContentValues partidas = new ContentValues();
+        ContentValues usuarios = new ContentValues();
+        int puntos = 0;
+        int cantidad = 0;
+        if(res==1){
+            mensaje="Han ganado los círculos";
+            puntos++;
+            cantidad++;
 
-        if(res==1) mensaje="Han ganado los círculos";
+            partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_GANADOR, "Círculos");
+            db.insert(EstructuraBBDD.EstructuraPartidas.TABLE_NAME_PARTIDAS, null, partidas);
+            if(puntos == 0){
+                usuarios.put(EstructuraBBDD.EstructuraUsuarios.COLUMN_NAME_NOMBRE, "Jugador1");
+                usuarios.put(EstructuraBBDD.EstructuraUsuarios.COLUMN_NAME_PUNTOS, puntos);
+                usuarios.put(EstructuraBBDD.EstructuraUsuarios.COLUMN_NAME_CANTIDAD, cantidad);
+                db.insert(EstructuraBBDD.EstructuraUsuarios.TABLE_NAME_USUARIOS, null, usuarios);
+            }else{
+                usuarios.put(EstructuraBBDD.EstructuraUsuarios.COLUMN_NAME_PUNTOS, puntos);
+                usuarios.put(EstructuraBBDD.EstructuraUsuarios.COLUMN_NAME_CANTIDAD, cantidad);
 
-        else if(res==2) mensaje="Han ganado las aspas";
+                String seleccion = EstructuraBBDD.EstructuraUsuarios._ID + "=?";
+                String[] selectionArgs = {String.valueOf(_id)};
+                int filaModificar = db.update(EstructuraBBDD.EstructuraUsuarios.TABLE_NAME_USUARIOS, usuarios, seleccion, selectionArgs);
+            }
+
+
+        }
+
+        else if(res==2){
+            mensaje="Han ganado las aspas";
+            puntos++;
+            cantidad++;
+
+            partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_GANADOR, "Aspas");
+            db.insert(EstructuraBBDD.EstructuraPartidas.TABLE_NAME_PARTIDAS, null, partidas);
+
+            if(puntos == 0){
+                usuarios.put(EstructuraBBDD.EstructuraUsuarios.COLUMN_NAME_NOMBRE, "Jugador2");
+                usuarios.put(EstructuraBBDD.EstructuraUsuarios.COLUMN_NAME_PUNTOS, puntos);
+                usuarios.put(EstructuraBBDD.EstructuraUsuarios.COLUMN_NAME_CANTIDAD, cantidad);
+                db.insert(EstructuraBBDD.EstructuraUsuarios.TABLE_NAME_USUARIOS, null, usuarios);
+            }else{
+                usuarios.put(EstructuraBBDD.EstructuraUsuarios.COLUMN_NAME_PUNTOS, puntos);
+                usuarios.put(EstructuraBBDD.EstructuraUsuarios.COLUMN_NAME_CANTIDAD, cantidad);
+
+                String seleccion = EstructuraBBDD.EstructuraUsuarios._ID + "=?";
+                String[] selectionArgs = {String.valueOf(_id)};
+                int filaModificar = db.update(EstructuraBBDD.EstructuraUsuarios.TABLE_NAME_USUARIOS, usuarios, seleccion, selectionArgs);
+            }
+        }
 
         else mensaje="Empate";
 
@@ -155,6 +210,13 @@ public class MainActivity extends Activity {
 
         if(partida.jugador==1){
             imagen.setImageResource(R.drawable.circulo);
+            if (media == null){
+                media = MediaPlayer.create(this, R..manuel);
+            }
+            if(!media.isPlaying()){
+                media.start();
+                media.seekTo(pos_reproduccion);
+            }
         }else{
             imagen.setImageResource(R.drawable.aspa);
         }
