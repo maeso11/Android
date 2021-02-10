@@ -17,6 +17,7 @@ public class MainActivity extends Activity {
     SQLiteHelper helper;
     SQLiteDatabase db;
     MediaPlayer media;
+    int pos_reproduccion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -211,7 +212,7 @@ public class MainActivity extends Activity {
         if(partida.jugador==1){
             imagen.setImageResource(R.drawable.circulo);
             if (media == null){
-                media = MediaPlayer.create(this, R..manuel);
+                media = MediaPlayer.create(this, R.raw.coin);
             }
             if(!media.isPlaying()){
                 media.start();
