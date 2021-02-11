@@ -18,6 +18,7 @@ public class MainActivity extends Activity {
     SQLiteDatabase db;
     MediaPlayer media;
     int pos_reproduccion;
+    int dificultad=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +65,7 @@ public class MainActivity extends Activity {
 
         int id=configDificultad.getCheckedRadioButtonId();
 
-        int dificultad=0;
+
 
         if(id==R.id.radioMedio){
             dificultad=1;
@@ -143,12 +144,23 @@ public class MainActivity extends Activity {
         int cantidad = 0;
         if(res==1){
             mensaje="Han ganado los círculos";
-            puntos++;
-            cantidad++;
+            if (dificultad == 1){
+                puntos++;
+                cantidad++;
+                partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_GANADOR, "Círculos");
+                partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_PUNTOS, puntos);
+                db.insert(EstructuraBBDD.EstructuraPartidas.TABLE_NAME_PARTIDAS, null, partidas);
+            }else if(dificultad == 2){
+                puntos = 2;
+                cantidad++;
+                partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_GANADOR, "Círculos");
+                partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_PUNTOS, puntos);
+                db.insert(EstructuraBBDD.EstructuraPartidas.TABLE_NAME_PARTIDAS, null, partidas);
+            }
 
-            partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_GANADOR, "Círculos");
-            db.insert(EstructuraBBDD.EstructuraPartidas.TABLE_NAME_PARTIDAS, null, partidas);
-            if(puntos == 0){
+
+
+            /*if(puntos == 0){
                 usuarios.put(EstructuraBBDD.EstructuraUsuarios.COLUMN_NAME_NOMBRE, "Jugador1");
                 usuarios.put(EstructuraBBDD.EstructuraUsuarios.COLUMN_NAME_PUNTOS, puntos);
                 usuarios.put(EstructuraBBDD.EstructuraUsuarios.COLUMN_NAME_CANTIDAD, cantidad);
@@ -160,7 +172,7 @@ public class MainActivity extends Activity {
                 String seleccion = EstructuraBBDD.EstructuraUsuarios._ID + "=?";
                 String[] selectionArgs = {String.valueOf(_id)};
                 int filaModificar = db.update(EstructuraBBDD.EstructuraUsuarios.TABLE_NAME_USUARIOS, usuarios, seleccion, selectionArgs);
-            }
+            }*/
 
 
         }
@@ -173,7 +185,7 @@ public class MainActivity extends Activity {
             partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_GANADOR, "Aspas");
             db.insert(EstructuraBBDD.EstructuraPartidas.TABLE_NAME_PARTIDAS, null, partidas);
 
-            if(puntos == 0){
+            /*if(puntos == 0){
                 usuarios.put(EstructuraBBDD.EstructuraUsuarios.COLUMN_NAME_NOMBRE, "Jugador2");
                 usuarios.put(EstructuraBBDD.EstructuraUsuarios.COLUMN_NAME_PUNTOS, puntos);
                 usuarios.put(EstructuraBBDD.EstructuraUsuarios.COLUMN_NAME_CANTIDAD, cantidad);
@@ -185,7 +197,7 @@ public class MainActivity extends Activity {
                 String seleccion = EstructuraBBDD.EstructuraUsuarios._ID + "=?";
                 String[] selectionArgs = {String.valueOf(_id)};
                 int filaModificar = db.update(EstructuraBBDD.EstructuraUsuarios.TABLE_NAME_USUARIOS, usuarios, seleccion, selectionArgs);
-            }
+            }*/
         }
 
         else mensaje="Empate";

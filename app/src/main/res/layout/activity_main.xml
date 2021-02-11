@@ -33,7 +33,6 @@
                 android:id="@+id/btnJugador1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="Jugar"
                 android:text="1 JUGADOR" />
 
             <Button
@@ -52,12 +51,14 @@
                 android:id="@+id/radioFacil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="Jugar"
                 android:text="FACIL" />
 
             <RadioButton
                 android:id="@+id/radioMedio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="Jugar"
                 android:text="MEDIO" />
 
             <RadioButton
