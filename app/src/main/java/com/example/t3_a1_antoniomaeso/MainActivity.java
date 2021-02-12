@@ -2,12 +2,14 @@ package com.example.t3_a1_antoniomaeso;
 
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -16,6 +18,8 @@ public class MainActivity extends Activity {
 
     SQLiteHelper helper;
     SQLiteDatabase db;
+    EditText edtNombre1;
+    EditText edtNombre2;
     MediaPlayer media;
     int pos_reproduccion;
     int dificultad=0;
@@ -24,6 +28,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        edtNombre1 = findViewById(R.id.edtNombre1);
+        edtNombre2 = findViewById(R.id.edtNombre2);
         helper = new SQLiteHelper(this);
         db = helper.getWritableDatabase();
 
@@ -67,9 +73,9 @@ public class MainActivity extends Activity {
 
 
 
-        if(id==R.id.radioMedio){
+        if(id==R.id.radioFacil){
             dificultad=1;
-        }else if(id==R.id.radioDificil){
+        }else if(id==R.id.radioMedio){
             dificultad=2;
         }
 
@@ -78,6 +84,8 @@ public class MainActivity extends Activity {
         //deshabilitamos los botones del tablero
         ((Button)findViewById(R.id.btnJugador1)).setEnabled(false);
         ((Button)findViewById(R.id.btnJugador2)).setEnabled(false);
+        ((EditText)findViewById(R.id.edtNombre1)).setEnabled(false);
+        ((EditText)findViewById(R.id.edtNombre2)).setEnabled(false);
         ((RadioGroup)findViewById(R.id.grupoDificultad)).setAlpha(0);
 
     }
@@ -139,68 +147,66 @@ public class MainActivity extends Activity {
 
         String mensaje;
         ContentValues partidas = new ContentValues();
-        ContentValues usuarios = new ContentValues();
-        int puntos = 0;
-        int cantidad = 0;
         if(res==1){
             mensaje="Han ganado los círculos";
             if (dificultad == 1){
-                puntos++;
-                cantidad++;
-                partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_GANADOR, "Círculos");
-                partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_PUNTOS, puntos);
+
+                partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_JUGADOR1, String.valueOf(edtNombre1));
+                partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_JUGADOR2, String.valueOf(edtNombre2));
+                partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_GANADOR, String.valueOf(edtNombre1));
+                partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_DIFICULATAD, "Fácil");
+
                 db.insert(EstructuraBBDD.EstructuraPartidas.TABLE_NAME_PARTIDAS, null, partidas);
             }else if(dificultad == 2){
-                puntos = 2;
-                cantidad++;
-                partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_GANADOR, "Círculos");
-                partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_PUNTOS, puntos);
+
+                partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_JUGADOR1, String.valueOf(edtNombre1));
+                partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_JUGADOR2, String.valueOf(edtNombre2));
+                partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_GANADOR, String.valueOf(edtNombre1));
+                partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_DIFICULATAD, "Medio");
                 db.insert(EstructuraBBDD.EstructuraPartidas.TABLE_NAME_PARTIDAS, null, partidas);
             }
-
-
-
-            /*if(puntos == 0){
-                usuarios.put(EstructuraBBDD.EstructuraUsuarios.COLUMN_NAME_NOMBRE, "Jugador1");
-                usuarios.put(EstructuraBBDD.EstructuraUsuarios.COLUMN_NAME_PUNTOS, puntos);
-                usuarios.put(EstructuraBBDD.EstructuraUsuarios.COLUMN_NAME_CANTIDAD, cantidad);
-                db.insert(EstructuraBBDD.EstructuraUsuarios.TABLE_NAME_USUARIOS, null, usuarios);
-            }else{
-                usuarios.put(EstructuraBBDD.EstructuraUsuarios.COLUMN_NAME_PUNTOS, puntos);
-                usuarios.put(EstructuraBBDD.EstructuraUsuarios.COLUMN_NAME_CANTIDAD, cantidad);
-
-                String seleccion = EstructuraBBDD.EstructuraUsuarios._ID + "=?";
-                String[] selectionArgs = {String.valueOf(_id)};
-                int filaModificar = db.update(EstructuraBBDD.EstructuraUsuarios.TABLE_NAME_USUARIOS, usuarios, seleccion, selectionArgs);
-            }*/
-
-
         }
 
         else if(res==2){
             mensaje="Han ganado las aspas";
-            puntos++;
-            cantidad++;
 
-            partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_GANADOR, "Aspas");
-            db.insert(EstructuraBBDD.EstructuraPartidas.TABLE_NAME_PARTIDAS, null, partidas);
+            if (dificultad == 1){
 
-            /*if(puntos == 0){
-                usuarios.put(EstructuraBBDD.EstructuraUsuarios.COLUMN_NAME_NOMBRE, "Jugador2");
-                usuarios.put(EstructuraBBDD.EstructuraUsuarios.COLUMN_NAME_PUNTOS, puntos);
-                usuarios.put(EstructuraBBDD.EstructuraUsuarios.COLUMN_NAME_CANTIDAD, cantidad);
-                db.insert(EstructuraBBDD.EstructuraUsuarios.TABLE_NAME_USUARIOS, null, usuarios);
-            }else{
-                usuarios.put(EstructuraBBDD.EstructuraUsuarios.COLUMN_NAME_PUNTOS, puntos);
-                usuarios.put(EstructuraBBDD.EstructuraUsuarios.COLUMN_NAME_CANTIDAD, cantidad);
+                partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_JUGADOR1, String.valueOf(edtNombre1));
+                partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_JUGADOR2, String.valueOf(edtNombre2));
+                partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_GANADOR, String.valueOf(edtNombre2));
+                partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_DIFICULATAD, "Fácil");
 
-                String seleccion = EstructuraBBDD.EstructuraUsuarios._ID + "=?";
-                String[] selectionArgs = {String.valueOf(_id)};
-                int filaModificar = db.update(EstructuraBBDD.EstructuraUsuarios.TABLE_NAME_USUARIOS, usuarios, seleccion, selectionArgs);
-            }*/
+                db.insert(EstructuraBBDD.EstructuraPartidas.TABLE_NAME_PARTIDAS, null, partidas);
+            }else if(dificultad == 2){
+
+                partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_JUGADOR1, String.valueOf(edtNombre1));
+                partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_JUGADOR2, String.valueOf(edtNombre2));
+                partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_GANADOR, String.valueOf(edtNombre2));
+                partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_DIFICULATAD, "Medio");
+                db.insert(EstructuraBBDD.EstructuraPartidas.TABLE_NAME_PARTIDAS, null, partidas);
+            }
         }
 
-        else mensaje="Empate";
+        else{
+            mensaje="Empate";
+            if (dificultad == 1){
+
+                partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_JUGADOR1, String.valueOf(edtNombre1));
+                partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_JUGADOR2, String.valueOf(edtNombre2));
+                partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_GANADOR, "Empate");
+                partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_DIFICULATAD, "Fácil");
+
+                db.insert(EstructuraBBDD.EstructuraPartidas.TABLE_NAME_PARTIDAS, null, partidas);
+            }else if(dificultad == 2){
+
+                partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_JUGADOR1, String.valueOf(edtNombre1));
+                partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_JUGADOR2, String.valueOf(edtNombre2));
+                partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_GANADOR, "Empate");
+                partidas.put(EstructuraBBDD.EstructuraPartidas.COLUMN_NAME_DIFICULATAD, "Medio");
+                db.insert(EstructuraBBDD.EstructuraPartidas.TABLE_NAME_PARTIDAS, null, partidas);
+            }
+        }
 
         Toast toast= Toast.makeText(this,mensaje,Toast.LENGTH_LONG);
         toast.setGravity(Gravity.CENTER,0,0);
@@ -212,6 +218,8 @@ public class MainActivity extends Activity {
         //habilitamos los botones del tablero
         ((Button)findViewById(R.id.btnJugador1)).setEnabled(true);
         ((Button)findViewById(R.id.btnJugador2)).setEnabled(true);
+        ((EditText)findViewById(R.id.edtNombre1)).setEnabled(true);
+        ((EditText)findViewById(R.id.edtNombre2)).setEnabled(true);
         ((RadioGroup)findViewById(R.id.grupoDificultad)).setAlpha(1);
 
     }
@@ -243,4 +251,8 @@ public class MainActivity extends Activity {
 
     private Partida partida;
 
+    public void partidas(View view) {
+        Intent i = new Intent(this, Partidas.class);
+        startActivity(i);
+    }
 }

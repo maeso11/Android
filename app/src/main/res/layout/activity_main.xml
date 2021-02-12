@@ -33,13 +33,34 @@
                 android:id="@+id/btnJugador1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="Jugar"
                 android:text="1 JUGADOR" />
 
             <Button
                 android:id="@+id/btnJugador2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="Jugar"
                 android:text="2 JUGADORES" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edtNombre1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Jugador 1"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/edtNombre2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Jugador 2"
+                android:inputType="textPersonName" />
         </TableRow>
 
         <RadioGroup
@@ -51,14 +72,12 @@
                 android:id="@+id/radioFacil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="Jugar"
                 android:text="FACIL" />
 
             <RadioButton
                 android:id="@+id/radioMedio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="Jugar"
                 android:text="MEDIO" />
 
             <RadioButton
@@ -77,13 +96,8 @@
                 android:id="@+id/btnPartidas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="partidas"
                 android:text="PARTIDAS" />
-
-            <Button
-                android:id="@+id/btnRanking"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="RANKING" />
 
             <Button
                 android:id="@+id/btnSonido"
