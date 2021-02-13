@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">T3_A1_AntonioMaeso</string>
+    <string name="titulo">TRES EN RAYA</string>
+    <string name="btnJugador1">1 JUGADOR</string>
+    <string name="btnJugador2">2 JUGADORES</string>
+    <string name="nivel1">FACIL</string>
+    <string name="nivel2">MEDIO</string>
+    <string name="nivel3">DIFICIL</string>
+    <string name="siguiente">PARTIDAS</string>
 </resources>

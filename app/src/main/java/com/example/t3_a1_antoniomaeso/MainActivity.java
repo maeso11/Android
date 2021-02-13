@@ -221,7 +221,7 @@ public class MainActivity extends Activity {
         ((EditText)findViewById(R.id.edtNombre1)).setEnabled(true);
         ((EditText)findViewById(R.id.edtNombre2)).setEnabled(true);
         ((RadioGroup)findViewById(R.id.grupoDificultad)).setAlpha(1);
-
+        db.close();
     }
 
     //metodo para marcar las casillas

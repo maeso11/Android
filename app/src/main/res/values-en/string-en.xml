@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">T3_A1_AntonioMaeso</string>
+    <string name="titulo">TIC TAC TOE</string>
+    <string name="btnJugador1">1 PLAYER</string>
+    <string name="btnJugador2">2 PLAYERS</string>
+    <string name="nivel1">EASY</string>
+    <string name="nivel2">MEDIUM</string>
+    <string name="nivel3">HARD</string>
+    <string name="siguiente">RANKING</string>
+</resources>

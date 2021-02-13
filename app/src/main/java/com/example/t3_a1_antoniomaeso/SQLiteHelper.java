@@ -17,15 +17,15 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(EstructuraBBDD.SQL_CREATE_PARTIDAS);
-        db.execSQL(EstructuraBBDD.SQL_CREATE_USUARIO);
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(EstructuraBBDD.SQL_DELETE_PARTIDAS);
-        db.execSQL(EstructuraBBDD.SQL_DELETE_USUARIO);
+
 
         db.execSQL(EstructuraBBDD.SQL_CREATE_PARTIDAS);
-        db.execSQL(EstructuraBBDD.SQL_CREATE_USUARIO);
+
     }
 }

@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:gravity="center"
-            android:text="TRES EN RAYA"
+            android:text="@string/titulo"
             android:textColor="@color/black"
             android:textSize="24sp" />
 
@@ -34,14 +34,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="Jugar"
-                android:text="1 JUGADOR" />
+                android:text="@string/btnJugador1" />
 
             <Button
                 android:id="@+id/btnJugador2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="Jugar"
-                android:text="2 JUGADORES" />
+                android:text="@string/btnJugador2" />
         </TableRow>
 
         <TableRow
@@ -72,19 +72,19 @@
                 android:id="@+id/radioFacil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="FACIL" />
+                android:text="@string/nivel1" />
 
             <RadioButton
                 android:id="@+id/radioMedio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="MEDIO" />
+                android:text="@string/nivel2" />
 
             <RadioButton
                 android:id="@+id/radioDificil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="DIFICIL" />
+                android:text="@string/nivel3" />
         </RadioGroup>
 
         <TableRow
@@ -97,14 +97,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="partidas"
-                android:text="PARTIDAS" />
+                android:text="@string/siguiente" />
 
-            <Button
-                android:id="@+id/btnSonido"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:backgroundTint="@color/teal_700"
-                app:icon="@android:drawable/ic_lock_silent_mode_off" />
         </TableRow>
 
     </LinearLayout>
